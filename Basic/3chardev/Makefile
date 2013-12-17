@@ -1,5 +1,5 @@
 ifneq ($(KERNELRELEASE),)
-obj-m :=globalvar.o
+obj-m :=globalvar.o demo_chr_dev.o
 else
 #KDIR := /lib/modules/3.5.0-40-generic/build
 KDIR := /lib/modules/$(shell uname -r)/build

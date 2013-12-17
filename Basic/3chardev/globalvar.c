@@ -40,7 +40,7 @@ int globalvar_num = 1;
 
 MODULE_LICENSE("Dual BSD/GPL");
 
-#define MAJOR_NUM 254
+//#define MAJOR_NUM 254
 
 struct cdev *globalvar_dev;	/* allocated in scull_init_module */
 
@@ -49,11 +49,8 @@ static ssize_t globalvar_write(struct file *,const char *,size_t,loff_t *);
 
 static struct file_operations globalvar_fops={
     .owner = THIS_MODULE,
-    .open = NULL,
     .read = globalvar_read,
     .write= globalvar_write,
-    .llseek= NULL,
-    .release= NULL
 };
 
 static int __init globalvar_init(void){
@@ -61,6 +58,12 @@ static int __init globalvar_init(void){
     dev_t dev ;
     dev =MKDEV(globalvar_major,globalvar_minor);
     ret = register_chrdev_region(dev,globalvar_num,"globalvar");
+    if(ret){
+        printk(KERN_ERR "globalvar region failed!!");
+    }
+    else{
+        printk(KERN_ERR "globalvar region Success!!");
+    }
     globalvar_dev = kmalloc(sizeof(struct cdev),GFP_KERNEL);
     cdev_init(globalvar_dev,&globalvar_fops);
     cdev_add(globalvar_dev,dev,1);
@@ -68,7 +71,7 @@ static int __init globalvar_init(void){
         printk(KERN_ERR "globalvar regchr failed!!");
     }
     else{
-        printk(KERN_ERR "globalvar regchr Success!!");
+        printk(KERN_ERR "globalvar regchr Success!!\n");
     }
     return ret;
 }
@@ -91,7 +94,7 @@ static void __exit globalvar_exit(void){
         printk(KERN_ERR "globalvar unregchr Success!!");
     }
 #endif
-    printk(KERN_ERR "globalvar unregchr Success!!");
+    printk(KERN_ERR "globalvar unregchr Success!!\n");
 }
 
 
