@@ -30,12 +30,16 @@
 #include <linux/seq_file.h>
 #include <linux/cdev.h>
 #include <linux/delay.h>
+#include <linux/device.h>
+
 
 
 //#include <asm/system.h>		/* cli(), *_flags */
 #include <asm/uaccess.h>	/* copy_*_user */
 #include <asm/io.h>
 #include <asm/delay.h>
+//#include <asm/hardware.h>
+
 
 
 
@@ -82,8 +86,8 @@ static int __init globalvar_init(void){
     else{
         printk(KERN_ERR "globalvar regchr Success!!\n");
     }
-	//gc = class_create(THIS_MODULE,"globalvar");
-	//gc_device = device_create(gc,NULL,dev,NULL,"GC");
+	gc = class_create(THIS_MODULE,"globalvar");
+	gc_device = device_create(gc,NULL,dev_g,NULL,"globalvar");
 	//device_create_file(gc_device,&flag_attr);
 	gconf = (volatile unsigned long *)(ioremap(0x56000010,4));
 	gdata = (volatile unsigned long *)(ioremap(0x56000014,4));
@@ -109,7 +113,8 @@ static void __exit globalvar_exit(void){
     cdev_del(globalvar_dev);
     kfree(globalvar_dev);
     unregister_chrdev_region(dev_g,globalvar_num);
-
+	device_destroy(gc,dev_g);
+	class_destroy(gc);
     printk(KERN_ERR "globalvar unregchr Success!!\n");
 }
 
