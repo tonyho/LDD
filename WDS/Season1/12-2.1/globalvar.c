@@ -89,13 +89,15 @@ static int __init globalvar_init(void){
 	gdata = (volatile unsigned long *)(ioremap(0x56000014,4));
 
 	//Set output
-	*gconf &= ~((0x3<<5*2) | (0x3<<6*2) | (0x3<<7*2) |(0x3<<8*2));
-	*gconf |=    ((0x1<<5*2) | (0x1<<6*2) | (0x1<<7*2) |(0x1<<8*2));
+	//*gconf &= ~((0x3<<5*2) | (0x3<<6*2) | (0x3<<7*2) |(0x3<<8*2));
+	//*gconf |=    ((0x1<<5*2) | (0x1<<6*2) | (0x1<<7*2) |(0x1<<8*2));
 
 	//out put 0101
-	*gdata |=    ((0x1<<5*1) | (0x0<<6*1) | (0x0<<7*1) |(0x0<<8*1));
+	//*gdata |=    ((0x1<<5*1) | (0x0<<6*1) | (0x0<<7*1) |(0x0<<8*1));
 	//udelay(500);
-	*gdata &= ~((0x1<<5*1) | (0x1<<6*1) | (0x1<<7*1) |(0x1<<8*1));
+	//*gdata &= ~((0x1<<5*1) | (0x1<<6*1) | (0x1<<7*1) |(0x1<<8*1));
+	*gconf &= ~((0x3<<(5*2)) | (0x3<<(6*2)) | (0x3<<(7*2)) | (0x3<<(8*2)));
+	*gconf |= ((0x1<<(5*2)) | (0x1<<(6*2)) | (0x1<<(7*2)) | (0x1<<(8*2)));
 
 
 	//jiffies
@@ -137,13 +139,13 @@ static ssize_t globalvar_write(struct file *filp,const char *buf,size_t len,loff
     printk(KERN_ERR "You input the buf = [%s],[%d]\n",buf,buf[0]);
 	if(buf[0] == 49)
 	{
-		printk(KERN_ERR "Will close all leds\n");
-		*gdata |=    ((0x1<<5*1) | (0x0<<6*1) | (0x0<<7*1) |(0x0<<8*1));
+		printk(KERN_ERR "Will close all leds\n");		
+		*gdata |=    ((1<<5) | (1<<6*1) | (0x1<<7*1) |(0x1<<8*1));
 	}
 	if(buf[0] == 48)
 	{
 		printk(KERN_ERR "Will open all leds\n");
-		*gdata &=   ~ ((0x1<<5*1) | (0x0<<6*1) | (0x0<<7*1) |(0x0<<8*1));
+		*gdata &=   ~ ((0x1<<5*1) | (0x1<<6*1) | (0x1<<7*1) |(0x1<<8*1));
 	}
     return sizeof(globalvar);
 }
