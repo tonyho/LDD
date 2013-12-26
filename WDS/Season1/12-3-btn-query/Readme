@@ -1,2 +1,2 @@
-globalvar: Doc下面的Basic.pdf文档对应源码
-demo_chr_dev: 《深入linux设备驱动程序内核机制》chapter 2文档对应源码
+arm-linux-gcc -o XXX XXX.c --static
+
