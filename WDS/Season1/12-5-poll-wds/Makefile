@@ -1,0 +1,11 @@
+#KERN_DIR = /work/system/linux-2.6.22.6
+KERN_DIR =/home/tonyho/tq2440/linux-2.6.30.4
+
+all:
+	make -C $(KERN_DIR) M=`pwd` modules 
+
+clean:
+	make -C $(KERN_DIR) M=`pwd` modules clean
+	rm -rf modules.order
+
+obj-m	+= forth_drv.o
