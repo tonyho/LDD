@@ -38,16 +38,6 @@
 #include<linux/interrupt.h>
 
 
-//#include <linux/smp_lock.h>
-#include <linux/workqueue.h>
-#include <linux/poll.h>
-
-
-//#include <asm/uaccess.h>
-//#include <asm/system.h>
-
-
-
 
 
 static struct cdev *btn_cdev;
@@ -58,6 +48,7 @@ static struct class_device *btn_class_device;
  volatile unsigned long *btn_cfg_base;
  volatile unsigned long *btn_data_base;
 
+static struct fasync_struct *btn_async;
 #define BTN_CLASS_NAME "btn_interrupt"
 
 struct btn_pin {
@@ -76,6 +67,8 @@ static unsigned int pinValue;
 static volatile int ev_press = 0;
 
 static DECLARE_WAIT_QUEUE_HEAD(btn_wait_irq);
+
+static int btn_fasync(int fd, struct file *filp, int on);
 
 static ssize_t btn_read(struct file *file, char __user *user, size_t size,loff_t*o){
 	if(size != sizeof(pinValue)){
@@ -106,18 +99,18 @@ static irqreturn_t btn_handler(int irq, void * dev_id){
 
 	//btn down
 	if(pinValue == 0){
-		pinValue = btnpin->KeyValue;
-		printk(KERN_ERR "irq=%d, down\n",irq);
+		//btnpin->KeyValue = btnpin->KeyValue;
+		printk(KERN_ERR "irq=%d, keyvalue=0x%x, down\n",irq,btnpin->KeyValue);
 	}
 	else{
-		pinValue = btnpin->KeyValue | 0x80;		
-		printk(KERN_ERR "irq=%d, up\n",irq);		
+		//btnpin->KeyValue = btnpin->KeyValue | 0x80;		
+		printk(KERN_ERR "irq=%d, keyvalue=0x%x, up\n",irq,btnpin->KeyValue |0x80);		
 	}
 	
-
-	ev_press = 1;
 	wake_up_interruptible(&btn_wait_irq);
-	
+	ev_press = 1;
+
+	kill_fasync(&btn_async, SIGIO, POLL_IN);
 	return IRQ_RETVAL(IRQ_HANDLED);
 }
 
@@ -129,26 +122,17 @@ int btn_close(struct inode *inode, struct file *file){
 	free_irq(IRQ_EINT0, &btn_pin_array[3]);	
 }
 
-static unsigned int btn_poll(struct file *file,
-				 struct poll_table_struct *wait)
-{
-	unsigned int mask = 0;
-
-	poll_wait(file, &btn_wait_irq, wait);
-	
-	if (ev_press )
-		mask |= POLLIN | POLLRDNORM;
-	return mask;
+static int btn_fasync(int fd, struct file *filp, int on){
+	printk(KERN_ERR "Enter the async");
+	return fasync_helper(fd, filp, on, &btn_async);
 }
-
-
 static struct file_operations btn_ops = {
 	.owner = THIS_MODULE,
 	.read = btn_read,
 	.write = btn_write,
 	.release = btn_close,
 	.open = btn_open,
-	.poll = btn_poll,
+	.fasync = btn_fasync,
 };
 
 int __init btn_init(void){
