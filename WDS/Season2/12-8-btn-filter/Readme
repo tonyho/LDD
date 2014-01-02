@@ -1,0 +1,2 @@
+arm-linux-gcc -o XXX XXX.c --static
+using the btn_test.c to test 
