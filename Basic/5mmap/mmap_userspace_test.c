@@ -8,6 +8,9 @@ char * pdata;
 #define MAP_SIZE 4096
 #define STR ("String from the User space\n")
 
+void teststaticfunc(void){
+    printf("Test");
+}
 
 int main(int argc, char * argv[]){
 	int fd= open(argv[1],O_RDWR|O_NDELAY);
@@ -21,6 +24,7 @@ int main(int argc, char * argv[]){
 		munmap(pdata,MAP_SIZE);
 		close(fd);
 	}
+    teststaticfunc();
 	return 0;
 	
 }
