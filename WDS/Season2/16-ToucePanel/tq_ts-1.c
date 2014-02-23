@@ -40,9 +40,11 @@ static volatile struct ADC_TS_regs *pRegs;
 static int wait_stylus_UPorDOWN(int UPorDown){
 	if(UPorDown == DOWN){
 		//pRegs->rADCTSC &= ~(1<<8); 
+		//printk(KERN_ERR "WaitforUpDown for Down\n");
 		pRegs->rADCTSC = 0xd3; 
 	}
 	else if(UPorDown == UP){
+		//printk(KERN_ERR "WaitforUpDown for Up\n");
 		//pRegs->rADCTSC |= (1<<8);
 		pRegs->rADCTSC = 0x1d3; 
 	}
@@ -54,34 +56,15 @@ static int wait_stylus_UPorDOWN(int UPorDown){
 }
 
 static void Enable_start_ADC(void){
-	pRegs->rADCCON |= 1;
+	//pRegs->rADCCON |= 1;
+	pRegs->rADCCON |= (1<<0);
 }
 static void enter_measure_xy_mode(void){
 //	pRegs->rADCTSC |= ((1<<3)|(1<<2));
-	pRegs->rADCTSC = ((1<<3)|(1<<2));
+	pRegs->rADCTSC = (1<<3)|(1<<2);//((1<<3)|(1<<2));
 
 }
 
-static int TS_PostEvent(int UPorDOWN, int x, int y){
-	if(UPorDOWN == UP){
-		input_report_key(tq_ts_dev, BTN_TOUCH, 0);
-		input_report_abs(tq_ts_dev, ABS_PRESSURE, 0);
-		input_sync(tq_ts_dev);
-	}
-	else if(UPorDOWN == DOWN){
-		input_report_abs(tq_ts_dev, ABS_X, x);
-		input_report_abs(tq_ts_dev, ABS_Y, y);
-		input_report_abs(tq_ts_dev, ABS_PRESSURE, 1);
-		input_report_key(tq_ts_dev, BTN_TOUCH, 1);
-		input_sync(tq_ts_dev);
-	}
-	else{
-		printk(KERN_ERR "WaitforUpDown Parameter error\n");
-		return -1;
-	}
-	
-	return 0;
-}
 
 
 static irqreturn_t stylus_action_irq_handler(int irq, void *dev_id){
@@ -89,24 +72,28 @@ static irqreturn_t stylus_action_irq_handler(int irq, void *dev_id){
 
 	if(!(pRegs->rADCDATA0 & (1<<15))){//Sytlus down detected
 		printk(KERN_DEBUG "Stylus Down\n");
-		enter_measure_xy_mode();
-		Enable_start_ADC();
+		
+		//enter_measure_xy_mode();
+		//Enable_start_ADC();
 		wait_stylus_UPorDOWN(UP);
+		
 	}
-	else{
+	if((pRegs->rADCDATA0 & (1<<15))){//else{
 		printk(KERN_DEBUG "Stylus Up\n");
-		TS_PostEvent(UP,0,0);
+		//TS_PostEvent(UP,0,0);
+		wait_stylus_UPorDOWN(DOWN);
 	}
 	
 	return IRQ_HANDLED;
 }
 static irqreturn_t adc_irq_handler(int irq, void *dev_id){
 	printk(KERN_ERR "ADC Irq\n");
-	if(DOWN == (pRegs->rADCDATA0&(1<<15))){
-		TS_PostEvent(DOWN,pRegs->rADCDATA0&0x3ff,pRegs->rADCDATA1&0x3ff);
+		if(!(pRegs->rADCDATA0 & (1<<15))){//Sytlus down detected
+		//TS_PostEvent(DOWN,pRegs->rADCDATA0&0x3ff,pRegs->rADCDATA1&0x3ff);
+		wait_stylus_UPorDOWN(UP);
 	}
 	else{
-		TS_PostEvent(UP,0,0);
+		//TS_PostEvent(UP,0,0);
 	}
 	return IRQ_HANDLED;
 }
@@ -115,6 +102,7 @@ static irqreturn_t adc_irq_handler(int irq, void *dev_id){
 static int __init tq_ts_init(void)
 {	
 	struct clk* clk;
+	printk(KERN_ERR "Init........\n");
 
 	//1 Add a input device
 	tq_ts_dev = input_allocate_device();
@@ -133,7 +121,6 @@ static int __init tq_ts_init(void)
 	input_set_abs_params(tq_ts_dev, ABS_Y, 0, 0x3FF, 0, 0);
 	input_set_abs_params(tq_ts_dev, ABS_PRESSURE, 0, 1, 0, 0);
 
-	//tq_ts_dev->name = tq2440ts_name;
 	input_register_device(tq_ts_dev);
 	
 	//0 Enable Clk
@@ -161,7 +148,7 @@ static int __init tq_ts_init(void)
 	// Set the TouchPanel regs
 	/*Ref the Page442  Waiting for Interrupt Mode : rADCTSC=0xd3 Wating for stylus down*/
 	pRegs->rADCTSC = 0xd3;
-	pRegs->rADCDLY = 0x10;
+	
 
 	return 0;
 }

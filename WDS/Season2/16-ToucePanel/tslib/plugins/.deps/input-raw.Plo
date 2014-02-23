@@ -1,0 +1,172 @@
+input-raw.lo: input-raw.c ../config.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/errno.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/features.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/predefs.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/cdefs.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/wordsize.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/gnu/stubs.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/errno.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/errno.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/errno.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm-generic/errno.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm-generic/errno-base.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/stdio.h \
+  /home/tonyho/tq2440/4.3.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.3/include/stddef.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/types.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/typesizes.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/libio.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/_G_config.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/wchar.h \
+  /home/tonyho/tq2440/4.3.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.3/include/stdarg.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio_lim.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sys_errlist.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/stdlib.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/types.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/time.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/endian.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/endian.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/select.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/select.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sigset.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/time.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/sysmacros.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/pthreadtypes.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/alloca.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/unistd.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/posix_opt.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/confname.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/getopt.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/time.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/input.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/ioctl.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/ioctls.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/ioctls.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/ioctl.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm-generic/ioctl.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/ioctl-types.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/ttydefaults.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/types.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/posix_types.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/stddef.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/posix_types.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/types.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm-generic/int-ll64.h \
+  ../src/tslib-private.h ../src/tslib.h ../src/tslib-filter.h \
+  ../src/tslib.h
+
+../config.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/errno.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/features.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/predefs.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/cdefs.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/wordsize.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/gnu/stubs.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/errno.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/errno.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/errno.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm-generic/errno.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm-generic/errno-base.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/stdio.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.3/include/stddef.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/types.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/typesizes.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/libio.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/_G_config.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/wchar.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.3.3/include/stdarg.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio_lim.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sys_errlist.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/stdio.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/stdlib.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/types.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/time.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/endian.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/endian.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/select.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/select.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/sigset.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/time.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/sysmacros.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/pthreadtypes.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/alloca.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/unistd.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/posix_opt.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/confname.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/getopt.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/time.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/input.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/ioctl.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/ioctls.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/ioctls.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/ioctl.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm-generic/ioctl.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/bits/ioctl-types.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/sys/ttydefaults.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/types.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/posix_types.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/stddef.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/posix_types.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/types.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm-generic/int-ll64.h:
+
+../src/tslib-private.h:
+
+../src/tslib.h:
+
+../src/tslib-filter.h:
+
+../src/tslib.h:

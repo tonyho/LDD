@@ -1,0 +1,21 @@
+font_8x16.o: font_8x16.c font.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/types.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/posix_types.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/stddef.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/posix_types.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/types.h \
+  /home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm-generic/int-ll64.h
+
+font.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/types.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/posix_types.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/linux/stddef.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/posix_types.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm/types.h:
+
+/home/tonyho/tq2440/4.3.3/bin/../arm-none-linux-gnueabi/libc/usr/include/asm-generic/int-ll64.h:

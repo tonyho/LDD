@@ -1,5 +1,5 @@
 ifneq ($(KERNELRELEASE),)
-obj-m :=tq_ts.o
+obj-m :=tq_ts.o s3c_ts.o tq_ts-1.o
 else
 KDIR := /home/tonyho/tq2440/linux-2.6.30.4
 all:
