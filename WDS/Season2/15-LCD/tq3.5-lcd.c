@@ -16,9 +16,23 @@
 #include <asm/div64.h>
 
 #include <asm/mach/map.h>
+
+//Judge the Linux Version
+//Ref: http://blog.chinaunix.net/uid-9525959-id-3064856.html
+#include <linux/version.h>
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,26)
 #include <mach/regs-lcd.h>
 #include <mach/regs-gpio.h>
 #include <mach/fb.h>
+#else
+#include <asm/arch/regs-gpio.h>
+#include <asm/arch/regs-lcd.h>
+#include <asm/arch/idle.h>
+#include <asm/arch/fb.h>
+
+#endif
+
+
 
 struct lcd_regs {
 	unsigned long	lcdcon1;	
