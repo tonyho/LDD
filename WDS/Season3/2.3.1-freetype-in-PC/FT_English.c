@@ -15,6 +15,10 @@
 #define WIDTH   80
 #define HEIGHT  80
 
+#define X_START_POS 0
+#define Y_START_POS 30
+
+
 
 /* origin is the upper left corner */
 unsigned char image[HEIGHT][WIDTH];
@@ -122,8 +126,8 @@ main( int     argc,
 
   /* the pen position in 26.6 cartesian space coordinates; */
   /* start at (0,40) relative to the upper left corner  */
-  pen.x = 0 * 64;
-  pen.y = ( target_height - 40 ) * 64;
+  pen.x = X_START_POS * 64;
+  pen.y = ( target_height - Y_START_POS ) * 64;
 
   for ( n = 0; n < num_chars; n++ )
   {
